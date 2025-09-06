@@ -25,10 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="src\Main Bot\Evaluation.cs">
+    <Compile Update="src\Evaluation Tuner\Evaluation.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="src\Main Bot\PrecomputedEvalData.cs">
+    <Compile Update="src\Evaluation Tuner\PrecomputedEvalData.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
