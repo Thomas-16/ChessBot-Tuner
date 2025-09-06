@@ -1,2 +1,2 @@
-# ChessBot-Tuner
+# ChessBot Tuner
 
