@@ -36,7 +36,7 @@ public static class TunableParameters
     [Tunable] public static float PawnPSTEnd_A1 = 10; [Tunable] public static float PawnPSTEnd_B1 = 10; [Tunable] public static float PawnPSTEnd_C1 = 10; [Tunable] public static float PawnPSTEnd_D1 = 10; [Tunable] public static float PawnPSTEnd_E1 = 10; [Tunable] public static float PawnPSTEnd_F1 = 10; [Tunable] public static float PawnPSTEnd_G1 = 10; [Tunable] public static float PawnPSTEnd_H1 = 10;
     [Tunable] public static float PawnPSTEnd_A0 = 0; [Tunable] public static float PawnPSTEnd_B0 = 0; [Tunable] public static float PawnPSTEnd_C0 = 0; [Tunable] public static float PawnPSTEnd_D0 = 0; [Tunable] public static float PawnPSTEnd_E0 = 0; [Tunable] public static float PawnPSTEnd_F0 = 0; [Tunable] public static float PawnPSTEnd_G0 = 0; [Tunable] public static float PawnPSTEnd_H0 = 0;
 
-    // Knight PST (opening and endgame)
+    // Knight PST (opening)
     [Tunable] public static float KnightPST_A8 = -50; [Tunable] public static float KnightPST_B8 = -40; [Tunable] public static float KnightPST_C8 = -30; [Tunable] public static float KnightPST_D8 = -30; [Tunable] public static float KnightPST_E8 = -30; [Tunable] public static float KnightPST_F8 = -30; [Tunable] public static float KnightPST_G8 = -40; [Tunable] public static float KnightPST_H8 = -50;
     [Tunable] public static float KnightPST_A7 = -40; [Tunable] public static float KnightPST_B7 = -20; [Tunable] public static float KnightPST_C7 = 0; [Tunable] public static float KnightPST_D7 = 0; [Tunable] public static float KnightPST_E7 = 0; [Tunable] public static float KnightPST_F7 = 0; [Tunable] public static float KnightPST_G7 = -20; [Tunable] public static float KnightPST_H7 = -40;
     [Tunable] public static float KnightPST_A6 = -30; [Tunable] public static float KnightPST_B6 = 0; [Tunable] public static float KnightPST_C6 = 10; [Tunable] public static float KnightPST_D6 = 15; [Tunable] public static float KnightPST_E6 = 15; [Tunable] public static float KnightPST_F6 = 10; [Tunable] public static float KnightPST_G6 = 0; [Tunable] public static float KnightPST_H6 = -30;
@@ -46,7 +46,17 @@ public static class TunableParameters
     [Tunable] public static float KnightPST_A2 = -40; [Tunable] public static float KnightPST_B2 = -20; [Tunable] public static float KnightPST_C2 = 0; [Tunable] public static float KnightPST_D2 = 5; [Tunable] public static float KnightPST_E2 = 5; [Tunable] public static float KnightPST_F2 = 0; [Tunable] public static float KnightPST_G2 = -20; [Tunable] public static float KnightPST_H2 = -40;
     [Tunable] public static float KnightPST_A1 = -50; [Tunable] public static float KnightPST_B1 = -40; [Tunable] public static float KnightPST_C1 = -30; [Tunable] public static float KnightPST_D1 = -30; [Tunable] public static float KnightPST_E1 = -30; [Tunable] public static float KnightPST_F1 = -30; [Tunable] public static float KnightPST_G1 = -40; [Tunable] public static float KnightPST_H1 = -50;
 
-    // Bishop PST (opening and endgame)
+    // Knight PST (endgame)
+    [Tunable] public static float KnightPSTEnd_A8 = -50; [Tunable] public static float KnightPSTEnd_B8 = -40; [Tunable] public static float KnightPSTEnd_C8 = -30; [Tunable] public static float KnightPSTEnd_D8 = -30; [Tunable] public static float KnightPSTEnd_E8 = -30; [Tunable] public static float KnightPSTEnd_F8 = -30; [Tunable] public static float KnightPSTEnd_G8 = -40; [Tunable] public static float KnightPSTEnd_H8 = -50;
+    [Tunable] public static float KnightPSTEnd_A7 = -40; [Tunable] public static float KnightPSTEnd_B7 = -20; [Tunable] public static float KnightPSTEnd_C7 = 0; [Tunable] public static float KnightPSTEnd_D7 = 0; [Tunable] public static float KnightPSTEnd_E7 = 0; [Tunable] public static float KnightPSTEnd_F7 = 0; [Tunable] public static float KnightPSTEnd_G7 = -20; [Tunable] public static float KnightPSTEnd_H7 = -40;
+    [Tunable] public static float KnightPSTEnd_A6 = -30; [Tunable] public static float KnightPSTEnd_B6 = 0; [Tunable] public static float KnightPSTEnd_C6 = 10; [Tunable] public static float KnightPSTEnd_D6 = 15; [Tunable] public static float KnightPSTEnd_E6 = 15; [Tunable] public static float KnightPSTEnd_F6 = 10; [Tunable] public static float KnightPSTEnd_G6 = 0; [Tunable] public static float KnightPSTEnd_H6 = -30;
+    [Tunable] public static float KnightPSTEnd_A5 = -30; [Tunable] public static float KnightPSTEnd_B5 = 5; [Tunable] public static float KnightPSTEnd_C5 = 15; [Tunable] public static float KnightPSTEnd_D5 = 20; [Tunable] public static float KnightPSTEnd_E5 = 20; [Tunable] public static float KnightPSTEnd_F5 = 15; [Tunable] public static float KnightPSTEnd_G5 = 5; [Tunable] public static float KnightPSTEnd_H5 = -30;
+    [Tunable] public static float KnightPSTEnd_A4 = -30; [Tunable] public static float KnightPSTEnd_B4 = 0; [Tunable] public static float KnightPSTEnd_C4 = 15; [Tunable] public static float KnightPSTEnd_D4 = 20; [Tunable] public static float KnightPSTEnd_E4 = 20; [Tunable] public static float KnightPSTEnd_F4 = 15; [Tunable] public static float KnightPSTEnd_G4 = 0; [Tunable] public static float KnightPSTEnd_H4 = -30;
+    [Tunable] public static float KnightPSTEnd_A3 = -30; [Tunable] public static float KnightPSTEnd_B3 = 5; [Tunable] public static float KnightPSTEnd_C3 = 10; [Tunable] public static float KnightPSTEnd_D3 = 15; [Tunable] public static float KnightPSTEnd_E3 = 15; [Tunable] public static float KnightPSTEnd_F3 = 10; [Tunable] public static float KnightPSTEnd_G3 = 5; [Tunable] public static float KnightPSTEnd_H3 = -30;
+    [Tunable] public static float KnightPSTEnd_A2 = -40; [Tunable] public static float KnightPSTEnd_B2 = -20; [Tunable] public static float KnightPSTEnd_C2 = 0; [Tunable] public static float KnightPSTEnd_D2 = 5; [Tunable] public static float KnightPSTEnd_E2 = 5; [Tunable] public static float KnightPSTEnd_F2 = 0; [Tunable] public static float KnightPSTEnd_G2 = -20; [Tunable] public static float KnightPSTEnd_H2 = -40;
+    [Tunable] public static float KnightPSTEnd_A1 = -50; [Tunable] public static float KnightPSTEnd_B1 = -40; [Tunable] public static float KnightPSTEnd_C1 = -30; [Tunable] public static float KnightPSTEnd_D1 = -30; [Tunable] public static float KnightPSTEnd_E1 = -30; [Tunable] public static float KnightPSTEnd_F1 = -30; [Tunable] public static float KnightPSTEnd_G1 = -40; [Tunable] public static float KnightPSTEnd_H1 = -50;
+
+    // Bishop PST (opening)
     [Tunable] public static float BishopPST_A8 = -20; [Tunable] public static float BishopPST_B8 = -10; [Tunable] public static float BishopPST_C8 = -10; [Tunable] public static float BishopPST_D8 = -10; [Tunable] public static float BishopPST_E8 = -10; [Tunable] public static float BishopPST_F8 = -10; [Tunable] public static float BishopPST_G8 = -10; [Tunable] public static float BishopPST_H8 = -20;
     [Tunable] public static float BishopPST_A7 = -10; [Tunable] public static float BishopPST_B7 = 0; [Tunable] public static float BishopPST_C7 = 0; [Tunable] public static float BishopPST_D7 = 0; [Tunable] public static float BishopPST_E7 = 0; [Tunable] public static float BishopPST_F7 = 0; [Tunable] public static float BishopPST_G7 = 0; [Tunable] public static float BishopPST_H7 = -10;
     [Tunable] public static float BishopPST_A6 = -10; [Tunable] public static float BishopPST_B6 = 0; [Tunable] public static float BishopPST_C6 = 5; [Tunable] public static float BishopPST_D6 = 10; [Tunable] public static float BishopPST_E6 = 10; [Tunable] public static float BishopPST_F6 = 5; [Tunable] public static float BishopPST_G6 = 0; [Tunable] public static float BishopPST_H6 = -10;
@@ -56,7 +66,17 @@ public static class TunableParameters
     [Tunable] public static float BishopPST_A2 = -10; [Tunable] public static float BishopPST_B2 = 5; [Tunable] public static float BishopPST_C2 = 0; [Tunable] public static float BishopPST_D2 = 0; [Tunable] public static float BishopPST_E2 = 0; [Tunable] public static float BishopPST_F2 = 0; [Tunable] public static float BishopPST_G2 = 5; [Tunable] public static float BishopPST_H2 = -10;
     [Tunable] public static float BishopPST_A1 = -20; [Tunable] public static float BishopPST_B1 = -10; [Tunable] public static float BishopPST_C1 = -10; [Tunable] public static float BishopPST_D1 = -10; [Tunable] public static float BishopPST_E1 = -10; [Tunable] public static float BishopPST_F1 = -10; [Tunable] public static float BishopPST_G1 = -10; [Tunable] public static float BishopPST_H1 = -20;
 
-    // Rook PST (opening and endgame)
+    // Bishop PST (opening)
+    [Tunable] public static float BishopPSTEnd_A8 = -20; [Tunable] public static float BishopPSTEnd_B8 = -10; [Tunable] public static float BishopPSTEnd_C8 = -10; [Tunable] public static float BishopPSTEnd_D8 = -10; [Tunable] public static float BishopPSTEnd_E8 = -10; [Tunable] public static float BishopPSTEnd_F8 = -10; [Tunable] public static float BishopPSTEnd_G8 = -10; [Tunable] public static float BishopPSTEnd_H8 = -20;
+    [Tunable] public static float BishopPSTEnd_A7 = -10; [Tunable] public static float BishopPSTEnd_B7 = 0; [Tunable] public static float BishopPSTEnd_C7 = 0; [Tunable] public static float BishopPSTEnd_D7 = 0; [Tunable] public static float BishopPSTEnd_E7 = 0; [Tunable] public static float BishopPSTEnd_F7 = 0; [Tunable] public static float BishopPSTEnd_G7 = 0; [Tunable] public static float BishopPSTEnd_H7 = -10;
+    [Tunable] public static float BishopPSTEnd_A6 = -10; [Tunable] public static float BishopPSTEnd_B6 = 0; [Tunable] public static float BishopPSTEnd_C6 = 5; [Tunable] public static float BishopPSTEnd_D6 = 10; [Tunable] public static float BishopPSTEnd_E6 = 10; [Tunable] public static float BishopPSTEnd_F6 = 5; [Tunable] public static float BishopPSTEnd_G6 = 0; [Tunable] public static float BishopPSTEnd_H6 = -10;
+    [Tunable] public static float BishopPSTEnd_A5 = -10; [Tunable] public static float BishopPSTEnd_B5 = 5; [Tunable] public static float BishopPSTEnd_C5 = 5; [Tunable] public static float BishopPSTEnd_D5 = 10; [Tunable] public static float BishopPSTEnd_E5 = 10; [Tunable] public static float BishopPSTEnd_F5 = 5; [Tunable] public static float BishopPSTEnd_G5 = 5; [Tunable] public static float BishopPSTEnd_H5 = -10;
+    [Tunable] public static float BishopPSTEnd_A4 = -10; [Tunable] public static float BishopPSTEnd_B4 = 0; [Tunable] public static float BishopPSTEnd_C4 = 10; [Tunable] public static float BishopPSTEnd_D4 = 10; [Tunable] public static float BishopPSTEnd_E4 = 10; [Tunable] public static float BishopPSTEnd_F4 = 10; [Tunable] public static float BishopPSTEnd_G4 = 0; [Tunable] public static float BishopPSTEnd_H4 = -10;
+    [Tunable] public static float BishopPSTEnd_A3 = -10; [Tunable] public static float BishopPSTEnd_B3 = 10; [Tunable] public static float BishopPSTEnd_C3 = 10; [Tunable] public static float BishopPSTEnd_D3 = 10; [Tunable] public static float BishopPSTEnd_E3 = 10; [Tunable] public static float BishopPSTEnd_F3 = 10; [Tunable] public static float BishopPSTEnd_G3 = 10; [Tunable] public static float BishopPSTEnd_H3 = -10;
+    [Tunable] public static float BishopPSTEnd_A2 = -10; [Tunable] public static float BishopPSTEnd_B2 = 5; [Tunable] public static float BishopPSTEnd_C2 = 0; [Tunable] public static float BishopPSTEnd_D2 = 0; [Tunable] public static float BishopPSTEnd_E2 = 0; [Tunable] public static float BishopPSTEnd_F2 = 0; [Tunable] public static float BishopPSTEnd_G2 = 5; [Tunable] public static float BishopPSTEnd_H2 = -10;
+    [Tunable] public static float BishopPSTEnd_A1 = -20; [Tunable] public static float BishopPSTEnd_B1 = -10; [Tunable] public static float BishopPSTEnd_C1 = -10; [Tunable] public static float BishopPSTEnd_D1 = -10; [Tunable] public static float BishopPSTEnd_E1 = -10; [Tunable] public static float BishopPSTEnd_F1 = -10; [Tunable] public static float BishopPSTEnd_G1 = -10; [Tunable] public static float BishopPSTEnd_H1 = -20;
+    
+    // Rook PST (opening)
     [Tunable] public static float RookPST_A8 = 0; [Tunable] public static float RookPST_B8 = 0; [Tunable] public static float RookPST_C8 = 0; [Tunable] public static float RookPST_D8 = 0; [Tunable] public static float RookPST_E8 = 0; [Tunable] public static float RookPST_F8 = 0; [Tunable] public static float RookPST_G8 = 0; [Tunable] public static float RookPST_H8 = 0;
     [Tunable] public static float RookPST_A7 = 5; [Tunable] public static float RookPST_B7 = 10; [Tunable] public static float RookPST_C7 = 10; [Tunable] public static float RookPST_D7 = 10; [Tunable] public static float RookPST_E7 = 10; [Tunable] public static float RookPST_F7 = 10; [Tunable] public static float RookPST_G7 = 10; [Tunable] public static float RookPST_H7 = 5;
     [Tunable] public static float RookPST_A6 = -5; [Tunable] public static float RookPST_B6 = 0; [Tunable] public static float RookPST_C6 = 0; [Tunable] public static float RookPST_D6 = 0; [Tunable] public static float RookPST_E6 = 0; [Tunable] public static float RookPST_F6 = 0; [Tunable] public static float RookPST_G6 = 0; [Tunable] public static float RookPST_H6 = -5;
@@ -66,7 +86,17 @@ public static class TunableParameters
     [Tunable] public static float RookPST_A2 = -5; [Tunable] public static float RookPST_B2 = 0; [Tunable] public static float RookPST_C2 = 0; [Tunable] public static float RookPST_D2 = 0; [Tunable] public static float RookPST_E2 = 0; [Tunable] public static float RookPST_F2 = 0; [Tunable] public static float RookPST_G2 = 0; [Tunable] public static float RookPST_H2 = -5;
     [Tunable] public static float RookPST_A1 = 0; [Tunable] public static float RookPST_B1 = 0; [Tunable] public static float RookPST_C1 = 6; [Tunable] public static float RookPST_D1 = 8; [Tunable] public static float RookPST_E1 = 8; [Tunable] public static float RookPST_F1 = 6; [Tunable] public static float RookPST_G1 = 0; [Tunable] public static float RookPST_H1 = 0;
 
-    // Queen PST (opening and endgame)
+    // Rook PST (endgame)
+    [Tunable] public static float RookPSTEnd_A8 = 0; [Tunable] public static float RookPSTEnd_B8 = 0; [Tunable] public static float RookPSTEnd_C8 = 0; [Tunable] public static float RookPSTEnd_D8 = 0; [Tunable] public static float RookPSTEnd_E8 = 0; [Tunable] public static float RookPSTEnd_F8 = 0; [Tunable] public static float RookPSTEnd_G8 = 0; [Tunable] public static float RookPSTEnd_H8 = 0;
+    [Tunable] public static float RookPSTEnd_A7 = 5; [Tunable] public static float RookPSTEnd_B7 = 10; [Tunable] public static float RookPSTEnd_C7 = 10; [Tunable] public static float RookPSTEnd_D7 = 10; [Tunable] public static float RookPSTEnd_E7 = 10; [Tunable] public static float RookPSTEnd_F7 = 10; [Tunable] public static float RookPSTEnd_G7 = 10; [Tunable] public static float RookPSTEnd_H7 = 5;
+    [Tunable] public static float RookPSTEnd_A6 = -5; [Tunable] public static float RookPSTEnd_B6 = 0; [Tunable] public static float RookPSTEnd_C6 = 0; [Tunable] public static float RookPSTEnd_D6 = 0; [Tunable] public static float RookPSTEnd_E6 = 0; [Tunable] public static float RookPSTEnd_F6 = 0; [Tunable] public static float RookPSTEnd_G6 = 0; [Tunable] public static float RookPSTEnd_H6 = -5;
+    [Tunable] public static float RookPSTEnd_A5 = -5; [Tunable] public static float RookPSTEnd_B5 = 0; [Tunable] public static float RookPSTEnd_C5 = 0; [Tunable] public static float RookPSTEnd_D5 = 0; [Tunable] public static float RookPSTEnd_E5 = 0; [Tunable] public static float RookPSTEnd_F5 = 0; [Tunable] public static float RookPSTEnd_G5 = 0; [Tunable] public static float RookPSTEnd_H5 = -5;
+    [Tunable] public static float RookPSTEnd_A4 = -5; [Tunable] public static float RookPSTEnd_B4 = 0; [Tunable] public static float RookPSTEnd_C4 = 0; [Tunable] public static float RookPSTEnd_D4 = 0; [Tunable] public static float RookPSTEnd_E4 = 0; [Tunable] public static float RookPSTEnd_F4 = 0; [Tunable] public static float RookPSTEnd_G4 = 0; [Tunable] public static float RookPSTEnd_H4 = -5;
+    [Tunable] public static float RookPSTEnd_A3 = -5; [Tunable] public static float RookPSTEnd_B3 = 0; [Tunable] public static float RookPSTEnd_C3 = 0; [Tunable] public static float RookPSTEnd_D3 = 0; [Tunable] public static float RookPSTEnd_E3 = 0; [Tunable] public static float RookPSTEnd_F3 = 0; [Tunable] public static float RookPSTEnd_G3 = 0; [Tunable] public static float RookPSTEnd_H3 = -5;
+    [Tunable] public static float RookPSTEnd_A2 = -5; [Tunable] public static float RookPSTEnd_B2 = 0; [Tunable] public static float RookPSTEnd_C2 = 0; [Tunable] public static float RookPSTEnd_D2 = 0; [Tunable] public static float RookPSTEnd_E2 = 0; [Tunable] public static float RookPSTEnd_F2 = 0; [Tunable] public static float RookPSTEnd_G2 = 0; [Tunable] public static float RookPSTEnd_H2 = -5;
+    [Tunable] public static float RookPSTEnd_A1 = 0; [Tunable] public static float RookPSTEnd_B1 = 0; [Tunable] public static float RookPSTEnd_C1 = 6; [Tunable] public static float RookPSTEnd_D1 = 8; [Tunable] public static float RookPSTEnd_E1 = 8; [Tunable] public static float RookPSTEnd_F1 = 6; [Tunable] public static float RookPSTEnd_G1 = 0; [Tunable] public static float RookPSTEnd_H1 = 0;
+
+    // Queen PST (opening)
     [Tunable] public static float QueenPST_A8 = -20; [Tunable] public static float QueenPST_B8 = -10; [Tunable] public static float QueenPST_C8 = -10; [Tunable] public static float QueenPST_D8 = -5; [Tunable] public static float QueenPST_E8 = -5; [Tunable] public static float QueenPST_F8 = -10; [Tunable] public static float QueenPST_G8 = -10; [Tunable] public static float QueenPST_H8 = -20;
     [Tunable] public static float QueenPST_A7 = -10; [Tunable] public static float QueenPST_B7 = 0; [Tunable] public static float QueenPST_C7 = 0; [Tunable] public static float QueenPST_D7 = 0; [Tunable] public static float QueenPST_E7 = 0; [Tunable] public static float QueenPST_F7 = 0; [Tunable] public static float QueenPST_G7 = 0; [Tunable] public static float QueenPST_H7 = -10;
     [Tunable] public static float QueenPST_A6 = -10; [Tunable] public static float QueenPST_B6 = 0; [Tunable] public static float QueenPST_C6 = 5; [Tunable] public static float QueenPST_D6 = 5; [Tunable] public static float QueenPST_E6 = 5; [Tunable] public static float QueenPST_F6 = 5; [Tunable] public static float QueenPST_G6 = 0; [Tunable] public static float QueenPST_H6 = -10;
@@ -75,6 +105,16 @@ public static class TunableParameters
     [Tunable] public static float QueenPST_A3 = -10; [Tunable] public static float QueenPST_B3 = 5; [Tunable] public static float QueenPST_C3 = 5; [Tunable] public static float QueenPST_D3 = 5; [Tunable] public static float QueenPST_E3 = 5; [Tunable] public static float QueenPST_F3 = 5; [Tunable] public static float QueenPST_G3 = 0; [Tunable] public static float QueenPST_H3 = -10;
     [Tunable] public static float QueenPST_A2 = -10; [Tunable] public static float QueenPST_B2 = 0; [Tunable] public static float QueenPST_C2 = 5; [Tunable] public static float QueenPST_D2 = 0; [Tunable] public static float QueenPST_E2 = 0; [Tunable] public static float QueenPST_F2 = 0; [Tunable] public static float QueenPST_G2 = 0; [Tunable] public static float QueenPST_H2 = -10;
     [Tunable] public static float QueenPST_A1 = -20; [Tunable] public static float QueenPST_B1 = -10; [Tunable] public static float QueenPST_C1 = -10; [Tunable] public static float QueenPST_D1 = -5; [Tunable] public static float QueenPST_E1 = -5; [Tunable] public static float QueenPST_F1 = -10; [Tunable] public static float QueenPST_G1 = -10; [Tunable] public static float QueenPST_H1 = -20;
+
+    // Queen PST (endgame)
+    [Tunable] public static float QueenPSTEnd_A8 = -20; [Tunable] public static float QueenPSTEnd_B8 = -10; [Tunable] public static float QueenPSTEnd_C8 = -10; [Tunable] public static float QueenPSTEnd_D8 = -5; [Tunable] public static float QueenPSTEnd_E8 = -5; [Tunable] public static float QueenPSTEnd_F8 = -10; [Tunable] public static float QueenPSTEnd_G8 = -10; [Tunable] public static float QueenPSTEnd_H8 = -20;
+    [Tunable] public static float QueenPSTEnd_A7 = -10; [Tunable] public static float QueenPSTEnd_B7 = 0; [Tunable] public static float QueenPSTEnd_C7 = 0; [Tunable] public static float QueenPSTEnd_D7 = 0; [Tunable] public static float QueenPSTEnd_E7 = 0; [Tunable] public static float QueenPSTEnd_F7 = 0; [Tunable] public static float QueenPSTEnd_G7 = 0; [Tunable] public static float QueenPSTEnd_H7 = -10;
+    [Tunable] public static float QueenPSTEnd_A6 = -10; [Tunable] public static float QueenPSTEnd_B6 = 0; [Tunable] public static float QueenPSTEnd_C6 = 5; [Tunable] public static float QueenPSTEnd_D6 = 5; [Tunable] public static float QueenPSTEnd_E6 = 5; [Tunable] public static float QueenPSTEnd_F6 = 5; [Tunable] public static float QueenPSTEnd_G6 = 0; [Tunable] public static float QueenPSTEnd_H6 = -10;
+    [Tunable] public static float QueenPSTEnd_A5 = -5; [Tunable] public static float QueenPSTEnd_B5 = 0; [Tunable] public static float QueenPSTEnd_C5 = 5; [Tunable] public static float QueenPSTEnd_D5 = 5; [Tunable] public static float QueenPSTEnd_E5 = 5; [Tunable] public static float QueenPSTEnd_F5 = 5; [Tunable] public static float QueenPSTEnd_G5 = 0; [Tunable] public static float QueenPSTEnd_H5 = -5;
+    [Tunable] public static float QueenPSTEnd_A4 = 0; [Tunable] public static float QueenPSTEnd_B4 = 0; [Tunable] public static float QueenPSTEnd_C4 = 5; [Tunable] public static float QueenPSTEnd_D4 = 5; [Tunable] public static float QueenPSTEnd_E4 = 5; [Tunable] public static float QueenPSTEnd_F4 = 5; [Tunable] public static float QueenPSTEnd_G4 = 0; [Tunable] public static float QueenPSTEnd_H4 = -5;
+    [Tunable] public static float QueenPSTEnd_A3 = -10; [Tunable] public static float QueenPSTEnd_B3 = 5; [Tunable] public static float QueenPSTEnd_C3 = 5; [Tunable] public static float QueenPSTEnd_D3 = 5; [Tunable] public static float QueenPSTEnd_E3 = 5; [Tunable] public static float QueenPSTEnd_F3 = 5; [Tunable] public static float QueenPSTEnd_G3 = 0; [Tunable] public static float QueenPSTEnd_H3 = -10;
+    [Tunable] public static float QueenPSTEnd_A2 = -10; [Tunable] public static float QueenPSTEnd_B2 = 0; [Tunable] public static float QueenPSTEnd_C2 = 5; [Tunable] public static float QueenPSTEnd_D2 = 0; [Tunable] public static float QueenPSTEnd_E2 = 0; [Tunable] public static float QueenPSTEnd_F2 = 0; [Tunable] public static float QueenPSTEnd_G2 = 0; [Tunable] public static float QueenPSTEnd_H2 = -10;
+    [Tunable] public static float QueenPSTEnd_A1 = -20; [Tunable] public static float QueenPSTEnd_B1 = -10; [Tunable] public static float QueenPSTEnd_C1 = -10; [Tunable] public static float QueenPSTEnd_D1 = -5; [Tunable] public static float QueenPSTEnd_E1 = -5; [Tunable] public static float QueenPSTEnd_F1 = -10; [Tunable] public static float QueenPSTEnd_G1 = -10; [Tunable] public static float QueenPSTEnd_H1 = -20;
 
     // King PST opening
     [Tunable] public static float KingPSTStart_A8 = -80; [Tunable] public static float KingPSTStart_B8 = -70; [Tunable] public static float KingPSTStart_C8 = -70; [Tunable] public static float KingPSTStart_D8 = -70; [Tunable] public static float KingPSTStart_E8 = -70; [Tunable] public static float KingPSTStart_F8 = -70; [Tunable] public static float KingPSTStart_G8 = -70; [Tunable] public static float KingPSTStart_H8 = -80;
@@ -184,6 +224,21 @@ public static class TunableParameters
             KnightPST_A1, KnightPST_B1, KnightPST_C1, KnightPST_D1, KnightPST_E1, KnightPST_F1, KnightPST_G1, KnightPST_H1
         };
     }
+    
+    public static float[] GetKnightPSTEnd()
+    {
+        return new float[]
+        {
+            KnightPSTEnd_A8, KnightPSTEnd_B8, KnightPSTEnd_C8, KnightPSTEnd_D8, KnightPSTEnd_E8, KnightPSTEnd_F8, KnightPSTEnd_G8, KnightPSTEnd_H8,
+            KnightPSTEnd_A7, KnightPSTEnd_B7, KnightPSTEnd_C7, KnightPSTEnd_D7, KnightPSTEnd_E7, KnightPSTEnd_F7, KnightPSTEnd_G7, KnightPSTEnd_H7,
+            KnightPSTEnd_A6, KnightPSTEnd_B6, KnightPSTEnd_C6, KnightPSTEnd_D6, KnightPSTEnd_E6, KnightPSTEnd_F6, KnightPSTEnd_G6, KnightPSTEnd_H6,
+            KnightPSTEnd_A5, KnightPSTEnd_B5, KnightPSTEnd_C5, KnightPSTEnd_D5, KnightPSTEnd_E5, KnightPSTEnd_F5, KnightPSTEnd_G5, KnightPSTEnd_H5,
+            KnightPSTEnd_A4, KnightPSTEnd_B4, KnightPSTEnd_C4, KnightPSTEnd_D4, KnightPSTEnd_E4, KnightPSTEnd_F4, KnightPSTEnd_G4, KnightPSTEnd_H4,
+            KnightPSTEnd_A3, KnightPSTEnd_B3, KnightPSTEnd_C3, KnightPSTEnd_D3, KnightPSTEnd_E3, KnightPSTEnd_F3, KnightPSTEnd_G3, KnightPSTEnd_H3,
+            KnightPSTEnd_A2, KnightPSTEnd_B2, KnightPSTEnd_C2, KnightPSTEnd_D2, KnightPSTEnd_E2, KnightPSTEnd_F2, KnightPSTEnd_G2, KnightPSTEnd_H2,
+            KnightPSTEnd_A1, KnightPSTEnd_B1, KnightPSTEnd_C1, KnightPSTEnd_D1, KnightPSTEnd_E1, KnightPSTEnd_F1, KnightPSTEnd_G1, KnightPSTEnd_H1
+        };
+    }
 
     public static float[] GetBishopPST()
     {
@@ -197,6 +252,21 @@ public static class TunableParameters
             BishopPST_A3, BishopPST_B3, BishopPST_C3, BishopPST_D3, BishopPST_E3, BishopPST_F3, BishopPST_G3, BishopPST_H3,
             BishopPST_A2, BishopPST_B2, BishopPST_C2, BishopPST_D2, BishopPST_E2, BishopPST_F2, BishopPST_G2, BishopPST_H2,
             BishopPST_A1, BishopPST_B1, BishopPST_C1, BishopPST_D1, BishopPST_E1, BishopPST_F1, BishopPST_G1, BishopPST_H1
+        };
+    }
+    
+    public static float[] GetBishopPSTEnd()
+    {
+        return new float[]
+        {
+            BishopPSTEnd_A8, BishopPSTEnd_B8, BishopPSTEnd_C8, BishopPSTEnd_D8, BishopPSTEnd_E8, BishopPSTEnd_F8, BishopPSTEnd_G8, BishopPSTEnd_H8,
+            BishopPSTEnd_A7, BishopPSTEnd_B7, BishopPSTEnd_C7, BishopPSTEnd_D7, BishopPSTEnd_E7, BishopPSTEnd_F7, BishopPSTEnd_G7, BishopPSTEnd_H7,
+            BishopPSTEnd_A6, BishopPSTEnd_B6, BishopPSTEnd_C6, BishopPSTEnd_D6, BishopPSTEnd_E6, BishopPSTEnd_F6, BishopPSTEnd_G6, BishopPSTEnd_H6,
+            BishopPSTEnd_A5, BishopPSTEnd_B5, BishopPSTEnd_C5, BishopPSTEnd_D5, BishopPSTEnd_E5, BishopPSTEnd_F5, BishopPSTEnd_G5, BishopPSTEnd_H5,
+            BishopPSTEnd_A4, BishopPSTEnd_B4, BishopPSTEnd_C4, BishopPSTEnd_D4, BishopPSTEnd_E4, BishopPSTEnd_F4, BishopPSTEnd_G4, BishopPSTEnd_H4,
+            BishopPSTEnd_A3, BishopPSTEnd_B3, BishopPSTEnd_C3, BishopPSTEnd_D3, BishopPSTEnd_E3, BishopPSTEnd_F3, BishopPSTEnd_G3, BishopPSTEnd_H3,
+            BishopPSTEnd_A2, BishopPSTEnd_B2, BishopPSTEnd_C2, BishopPSTEnd_D2, BishopPSTEnd_E2, BishopPSTEnd_F2, BishopPSTEnd_G2, BishopPSTEnd_H2,
+            BishopPSTEnd_A1, BishopPSTEnd_B1, BishopPSTEnd_C1, BishopPSTEnd_D1, BishopPSTEnd_E1, BishopPSTEnd_F1, BishopPSTEnd_G1, BishopPSTEnd_H1
         };
     }
 
@@ -214,6 +284,21 @@ public static class TunableParameters
             RookPST_A1, RookPST_B1, RookPST_C1, RookPST_D1, RookPST_E1, RookPST_F1, RookPST_G1, RookPST_H1
         };
     }
+    
+    public static float[] GetRookPSTEnd()
+    {
+        return new float[]
+        {
+            RookPSTEnd_A8, RookPSTEnd_B8, RookPSTEnd_C8, RookPSTEnd_D8, RookPSTEnd_E8, RookPSTEnd_F8, RookPSTEnd_G8, RookPSTEnd_H8,
+            RookPSTEnd_A7, RookPSTEnd_B7, RookPSTEnd_C7, RookPSTEnd_D7, RookPSTEnd_E7, RookPSTEnd_F7, RookPSTEnd_G7, RookPSTEnd_H7,
+            RookPSTEnd_A6, RookPSTEnd_B6, RookPSTEnd_C6, RookPSTEnd_D6, RookPSTEnd_E6, RookPSTEnd_F6, RookPSTEnd_G6, RookPSTEnd_H6,
+            RookPSTEnd_A5, RookPSTEnd_B5, RookPSTEnd_C5, RookPSTEnd_D5, RookPSTEnd_E5, RookPSTEnd_F5, RookPSTEnd_G5, RookPSTEnd_H5,
+            RookPSTEnd_A4, RookPSTEnd_B4, RookPSTEnd_C4, RookPSTEnd_D4, RookPSTEnd_E4, RookPSTEnd_F4, RookPSTEnd_G4, RookPSTEnd_H4,
+            RookPSTEnd_A3, RookPSTEnd_B3, RookPSTEnd_C3, RookPSTEnd_D3, RookPSTEnd_E3, RookPSTEnd_F3, RookPSTEnd_G3, RookPSTEnd_H3,
+            RookPSTEnd_A2, RookPSTEnd_B2, RookPSTEnd_C2, RookPSTEnd_D2, RookPSTEnd_E2, RookPSTEnd_F2, RookPSTEnd_G2, RookPSTEnd_H2,
+            RookPSTEnd_A1, RookPSTEnd_B1, RookPSTEnd_C1, RookPSTEnd_D1, RookPSTEnd_E1, RookPSTEnd_F1, RookPSTEnd_G1, RookPSTEnd_H1
+        };
+    }
 
     public static float[] GetQueenPST()
     {
@@ -227,6 +312,21 @@ public static class TunableParameters
             QueenPST_A3, QueenPST_B3, QueenPST_C3, QueenPST_D3, QueenPST_E3, QueenPST_F3, QueenPST_G3, QueenPST_H3,
             QueenPST_A2, QueenPST_B2, QueenPST_C2, QueenPST_D2, QueenPST_E2, QueenPST_F2, QueenPST_G2, QueenPST_H2,
             QueenPST_A1, QueenPST_B1, QueenPST_C1, QueenPST_D1, QueenPST_E1, QueenPST_F1, QueenPST_G1, QueenPST_H1
+        };
+    }
+    
+    public static float[] GetQueenPSTEnd()
+    {
+        return new float[]
+        {
+            QueenPSTEnd_A8, QueenPSTEnd_B8, QueenPSTEnd_C8, QueenPSTEnd_D8, QueenPSTEnd_E8, QueenPSTEnd_F8, QueenPSTEnd_G8, QueenPSTEnd_H8,
+            QueenPSTEnd_A7, QueenPSTEnd_B7, QueenPSTEnd_C7, QueenPSTEnd_D7, QueenPSTEnd_E7, QueenPSTEnd_F7, QueenPSTEnd_G7, QueenPSTEnd_H7,
+            QueenPSTEnd_A6, QueenPSTEnd_B6, QueenPSTEnd_C6, QueenPSTEnd_D6, QueenPSTEnd_E6, QueenPSTEnd_F6, QueenPSTEnd_G6, QueenPSTEnd_H6,
+            QueenPSTEnd_A5, QueenPSTEnd_B5, QueenPSTEnd_C5, QueenPSTEnd_D5, QueenPSTEnd_E5, QueenPSTEnd_F5, QueenPSTEnd_G5, QueenPSTEnd_H5,
+            QueenPSTEnd_A4, QueenPSTEnd_B4, QueenPSTEnd_C4, QueenPSTEnd_D4, QueenPSTEnd_E4, QueenPSTEnd_F4, QueenPSTEnd_G4, QueenPSTEnd_H4,
+            QueenPSTEnd_A3, QueenPSTEnd_B3, QueenPSTEnd_C3, QueenPSTEnd_D3, QueenPSTEnd_E3, QueenPSTEnd_F3, QueenPSTEnd_G3, QueenPSTEnd_H3,
+            QueenPSTEnd_A2, QueenPSTEnd_B2, QueenPSTEnd_C2, QueenPSTEnd_D2, QueenPSTEnd_E2, QueenPSTEnd_F2, QueenPSTEnd_G2, QueenPSTEnd_H2,
+            QueenPSTEnd_A1, QueenPSTEnd_B1, QueenPSTEnd_C1, QueenPSTEnd_D1, QueenPSTEnd_E1, QueenPSTEnd_F1, QueenPSTEnd_G1, QueenPSTEnd_H1
         };
     }
 

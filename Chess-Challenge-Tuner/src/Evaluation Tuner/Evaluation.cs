@@ -383,19 +383,19 @@ public static class Evaluation
                 break;
             case PieceType.Knight:
                 openingValue = TunableParameters.GetKnightPST()[squareIndex];
-                endgameValue = TunableParameters.GetKnightPST()[squareIndex]; // Knights use same table for both phases
+                endgameValue = TunableParameters.GetKnightPSTEnd()[squareIndex];
                 break;
             case PieceType.Bishop:
                 openingValue = TunableParameters.GetBishopPST()[squareIndex];
-                endgameValue = TunableParameters.GetBishopPST()[squareIndex]; // Bishops use same table for both phases
+                endgameValue = TunableParameters.GetBishopPSTEnd()[squareIndex];
                 break;
             case PieceType.Rook:
                 openingValue = TunableParameters.GetRookPST()[squareIndex];
-                endgameValue = TunableParameters.GetRookPST()[squareIndex]; // Rooks use same table for both phases
+                endgameValue = TunableParameters.GetRookPSTEnd()[squareIndex];
                 break;
             case PieceType.Queen:
                 openingValue = TunableParameters.GetQueenPST()[squareIndex];
-                endgameValue = TunableParameters.GetQueenPST()[squareIndex]; // Queens use same table for both phases
+                endgameValue = TunableParameters.GetQueenPSTEnd()[squareIndex];
                 break;
             case PieceType.King:
                 openingValue = TunableParameters.GetKingPSTStart()[squareIndex];
