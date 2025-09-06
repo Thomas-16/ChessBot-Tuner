@@ -45,6 +45,10 @@ Where:
 - .NET 6.0 or later
 - EPD training data file (quiet-labeled positions recommended)
 
+### Writing Your own Evaluation
+- Write your own static evaluation implementation in the Evaluation.cs file.
+- Define tunable parameters in TunableParameters.cs with the [Tunable] attribute.
+
 ### Basic Usage
 
 ```bash
