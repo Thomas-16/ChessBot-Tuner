@@ -573,7 +573,7 @@ public class TexelTuner
         
         foreach (var param in parameters.OrderBy(p => p.Name))
         {
-            lines.Add($"public static float {param.Name} = {param.Value};");
+            lines.Add($"public static float {param.Name} = {param.Value}f;");
         }
         
         File.WriteAllLines(filePath, lines);
