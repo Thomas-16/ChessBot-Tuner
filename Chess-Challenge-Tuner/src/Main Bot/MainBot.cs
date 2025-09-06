@@ -36,7 +36,7 @@ public class MainBot : IChessBot
     
     public Move Think(Board board, Timer timer)
     {
-        if (!ChessChallenge.Application.Program.UCI_MODE && !guiModeIsTimerConfiged)
+        if (!guiModeIsTimerConfiged)
         {
             if (hardTimeLimit == 0)
             {
@@ -51,7 +51,7 @@ public class MainBot : IChessBot
         
         // Book moves
         if (board.PlyCount <= 18 && openingBook.TryGetBookMove(board, out string moveString, 0.8)) {
-            if(!ChessChallenge.Application.Program.UCI_MODE) Console.WriteLine($"Book move found: {moveString}");
+            Console.WriteLine($"Book move found: {moveString}");
             return new Move(moveString, board);
         }
         
@@ -182,9 +182,6 @@ public class MainBot : IChessBot
                 previousDepthScore = bestEval; // Store for score stability tracking
                 bestEval = eval;
                 
-                // Output UCI info for completed depth
-                OutputUCIInfo(depth, eval, bestMoveThisIteration, searchStopwatch.ElapsedMilliseconds, positionsEvaluated);
-                
                 bestMoveThisIteration = Move.NullMove;
                 
                 // Stop if we found a winning checkmate for us
@@ -215,18 +212,16 @@ public class MainBot : IChessBot
         }
         
         searchStopwatch.Stop();
-        if(!ChessChallenge.Application.Program.UCI_MODE)
-        {
-            Console.WriteLine($"Depth searched: {depthSearched}, Final move: {bestMove.ToString()}, Time took: {searchStopwatch.ElapsedMilliseconds}ms, " +
-                        $"Positions evaluated: {positionsEvaluated}, Score: {bestEval}");
-            if (totalAspirationReSearches > 0)
-                Console.WriteLine($"Aspiration window re-searches: {totalAspirationReSearches}");
-        }
-
+        Console.WriteLine($"Depth searched: {depthSearched}, Final move: {bestMove.ToString()}, Time took: {searchStopwatch.ElapsedMilliseconds}ms, " +
+                          $"Positions evaluated: {positionsEvaluated}, Score: {bestEval}");
+        if (totalAspirationReSearches > 0)
+            Console.WriteLine($"Aspiration window re-searches: {totalAspirationReSearches}");
+            
+        
         if (bestMove == Move.NullMove)
         {
             bestMove = board.GetLegalMoves()[0];
-            if(!ChessChallenge.Application.Program.UCI_MODE) Console.WriteLine("Best move not found, using first legal move");
+            Console.WriteLine("Best move not found, using first legal move");
         }
 
         return bestMove;
@@ -236,7 +231,7 @@ public class MainBot : IChessBot
     {
         useMoveTime = true;
         useTimer = false;
-        hardTimeLimit = moveTimeMs - (ChessChallenge.Application.Program.UCI_MODE ? uciModeTimeReducion : 0); // To make sure we don't go past the allowed time
+        hardTimeLimit = moveTimeMs;
     }
     
     public void SetTimerMode()
@@ -469,7 +464,7 @@ public class MainBot : IChessBot
         }
         
         positionsEvaluated++;
-        int evaluation = Evaluation.Evaluate(board);
+        int evaluation = (int) Math.Round(Evaluation.Evaluate(board));
         
         if (evaluation >= beta)
             return beta;
@@ -509,7 +504,7 @@ public class MainBot : IChessBot
                 int capturedPieceValue = 0;
                 if (capture.CapturePieceType != PieceType.None)
                 {
-                    capturedPieceValue = Evaluation.PieceValues[(int)capture.CapturePieceType];
+                    capturedPieceValue = (int)Evaluation.PieceValues[(int)capture.CapturePieceType];
                 }
                 
                 // Add a small margin for positional gains
@@ -649,9 +644,6 @@ public class MainBot : IChessBot
             double minThinkTime = Math.Min(50, myTimeRemainingMs * 0.25);
             softTimeLimit = (int) Math.Ceiling(Math.Max(minThinkTime, thinkTimeMs));
             
-            // To make sure we don't go past the allowed time
-            softTimeLimit -= (ChessChallenge.Application.Program.UCI_MODE ? uciModeTimeReducion : 0);
-
             // Allow the bot to go a bit past the soft limit to finish the iteration
             // Base extension: 30% of soft limit, but scale down under time pressure
             double extensionPercent;
@@ -677,34 +669,6 @@ public class MainBot : IChessBot
             // Ensure hard limit is at least slightly higher than soft
             hardTimeLimit = Math.Max(hardTimeLimit, softTimeLimit + 10);
         }
-    }
-    
-    private void OutputUCIInfo(int depth, int score, Move bestMove, long timeMs, int nodes)
-    {
-        if (!ChessChallenge.Application.Program.UCI_MODE) return;
-        
-        // Calculate nodes per second
-        long nps = timeMs > 0 ? (nodes * 1000) / timeMs : 0;
-        
-        // Convert score to centipawns for UCI
-        int centipawnScore = score;
-        
-        // Handle mate scores
-        string scoreString;
-        if (Math.Abs(score) > 29000)
-        {
-            int mateDistance = (immediateMateScore - Math.Abs(score));
-            if (score > 0)
-                scoreString = $"mate {mateDistance}";
-            else
-                scoreString = $"mate -{mateDistance}";
-        }
-        else
-        {
-            scoreString = $"cp {centipawnScore}";
-        }
-        
-        Console.WriteLine($"info depth {depth} score {scoreString} time {timeMs} nodes {nodes} nps {nps} pv {bestMove}");
     }
     
     private static string LoadBookData()

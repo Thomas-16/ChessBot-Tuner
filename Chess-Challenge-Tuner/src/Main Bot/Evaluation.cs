@@ -3,8 +3,9 @@ using System;
 
 public static class Evaluation
 {
-    public static readonly int[] PieceValues = { 0, 100, 320, 330, 500, 900, 0 };
-    public static readonly int[] PieceValuesEndGame = { 0, 115, 305, 340, 510, 950, 0 };
+    // Use tunable parameters instead of static values
+    public static float[] PieceValues => TunableParameters.PieceValues;
+    public static float[] PieceValuesEndGame => TunableParameters.PieceValuesEndGame;
 
     static readonly ulong centerSquares = ((ulong)1 << new Square("e4").Index)
                           | ((ulong)1 << new Square("d4").Index)
@@ -34,26 +35,27 @@ public static class Evaluation
         0x8080808080808080  // File H
     };
     
-    static readonly int[] passedPawnBonuses = { 0, 120, 80, 50, 30, 15, 15 }; // bonus given to a passed pawn based on how close it is to promoting
-    static readonly int[] isolatedPawnPenaltyByCount = { 0, -10, -25, -50, -75, -75, -75, -75, -75 };
-    static readonly int[] kingPawnShieldScores = { 4, 7, 4, 3, 6, 3 };
+    // Use tunable parameters
+    static float[] passedPawnBonuses => TunableParameters.PassedPawnBonuses;
+    static float[] isolatedPawnPenaltyByCount => TunableParameters.IsolatedPawnPenaltyByCount;
+    static float[] kingPawnShieldScores => TunableParameters.KingPawnShieldScores;
     
-    static readonly int pawnCenterControlScore = 12;
-    static readonly int pieceCenterControlScore = 10;
-    static readonly int maxUnCastledKingPenalty = 50;
-    static readonly int semiOpenKingFilePenalty = 25;
-    static readonly int semiOpenNonKingFilePenalty = 15;
-    static readonly int fullyOpenKingFilePenalty = 15;
-    static readonly int fullyOpenNonKingFilePenalty = 10;
-    static readonly int mopUpKingDistanceMultiplier = 6;
-    static readonly int mopUpOpponentKingDistanceToCenterMultiplier = 10;
+    static float pawnCenterControlScore => TunableParameters.PawnCenterControlScore;
+    static float pieceCenterControlScore => TunableParameters.PieceCenterControlScore;
+    static float maxUnCastledKingPenalty => TunableParameters.MaxUncastledKingPenalty;
+    static float semiOpenKingFilePenalty => TunableParameters.SemiOpenKingFilePenalty;
+    static float semiOpenNonKingFilePenalty => TunableParameters.SemiOpenNonKingFilePenalty;
+    static float fullyOpenKingFilePenalty => TunableParameters.FullyOpenKingFilePenalty;
+    static float fullyOpenNonKingFilePenalty => TunableParameters.FullyOpenNonKingFilePenalty;
+    static float mopUpKingDistanceMultiplier => TunableParameters.MopUpKingDistanceMultiplier;
+    static float mopUpOpponentKingDistanceToCenterMultiplier => TunableParameters.MopUpOpponentKingDistanceToCenterMultiplier;
 
     
     // Performs static evaluation of the current position.
     // The position is assumed to be 'quiet', i.e. no captures are available that could drastically affect the evaluation.
     // The score that's returned is given from the perspective of whoever's turn it is to move.
     // So a positive score means the player whose turn it is to move has an advantage, while a negative score indicates a disadvantage.
-    public static int Evaluate(Board board)
+    public static float Evaluate(Board board)
     {
         if (board.IsInCheckmate())
         {
@@ -66,7 +68,7 @@ public static class Evaluation
             return 0;
         }
         
-        int evaluation = 0;
+        float evaluation = 0;
         
         // Calculate game phase (0 = opening, 1 = endgame)
         // Based on remaining material
@@ -86,59 +88,59 @@ public static class Evaluation
         ulong blackQueens = board.GetPieceBitboard(PieceType.Queen, false);
         
         // Evaluate material
-        int whiteMaterialEval = EvaluateMaterial(whitePawns, PieceType.Pawn, openingWeight, endGameWeight) +
-                                EvaluateMaterial(whiteKnights, PieceType.Knight, openingWeight, endGameWeight) +
-                                EvaluateMaterial(whiteBishops, PieceType.Bishop, openingWeight, endGameWeight) +
-                                EvaluateMaterial(whiteRooks, PieceType.Rook, openingWeight, endGameWeight) +
-                                EvaluateMaterial(whiteQueens, PieceType.Queen, openingWeight, endGameWeight);
-        int blackMaterialEval = EvaluateMaterial(blackPawns, PieceType.Pawn, openingWeight, endGameWeight) +
-                                EvaluateMaterial(blackKnights, PieceType.Knight, openingWeight, endGameWeight) +
-                                EvaluateMaterial(blackBishops, PieceType.Bishop, openingWeight, endGameWeight) +
-                                EvaluateMaterial(blackRooks, PieceType.Rook, openingWeight, endGameWeight) +
-                                EvaluateMaterial(blackQueens, PieceType.Queen, openingWeight, endGameWeight);
+        float whiteMaterialEval = EvaluateMaterial(whitePawns, PieceType.Pawn, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(whiteKnights, PieceType.Knight, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(whiteBishops, PieceType.Bishop, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(whiteRooks, PieceType.Rook, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(whiteQueens, PieceType.Queen, openingWeight, endGameWeight);
+        float blackMaterialEval = EvaluateMaterial(blackPawns, PieceType.Pawn, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(blackKnights, PieceType.Knight, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(blackBishops, PieceType.Bishop, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(blackRooks, PieceType.Rook, openingWeight, endGameWeight) +
+                                  EvaluateMaterial(blackQueens, PieceType.Queen, openingWeight, endGameWeight);
         evaluation += whiteMaterialEval - blackMaterialEval;
         
         // Evaluate piece square table
-        int whitePieceSquareTableEval = EvaluatePieceSquareTable(whitePawns, true, PieceType.Pawn, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(whiteKnights, true, PieceType.Knight, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(whiteBishops, true, PieceType.Bishop, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(whiteRooks, true, PieceType.Rook, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(whiteQueens, true, PieceType.Queen, openingWeight, endGameWeight);
-        int blackPieceSquareTableEval = EvaluatePieceSquareTable(blackPawns, false, PieceType.Pawn, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(blackKnights, false, PieceType.Knight, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(blackBishops, false, PieceType.Bishop, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(blackRooks, false, PieceType.Rook, openingWeight, endGameWeight) +
-                                        EvaluatePieceSquareTable(blackQueens, false, PieceType.Queen, openingWeight, endGameWeight);
+        float whitePieceSquareTableEval = EvaluatePieceSquareTable(whitePawns, true, PieceType.Pawn, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(whiteKnights, true, PieceType.Knight, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(whiteBishops, true, PieceType.Bishop, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(whiteRooks, true, PieceType.Rook, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(whiteQueens, true, PieceType.Queen, openingWeight, endGameWeight);
+        float blackPieceSquareTableEval = EvaluatePieceSquareTable(blackPawns, false, PieceType.Pawn, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(blackKnights, false, PieceType.Knight, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(blackBishops, false, PieceType.Bishop, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(blackRooks, false, PieceType.Rook, openingWeight, endGameWeight) +
+                                          EvaluatePieceSquareTable(blackQueens, false, PieceType.Queen, openingWeight, endGameWeight);
         evaluation += whitePieceSquareTableEval - blackPieceSquareTableEval;
         
         // King evaluation - get squares and evaluate normally
         Square whiteKingSquare = board.GetKingSquare(true);
         Square blackKingSquare = board.GetKingSquare(false);
         
-        int whiteKingValue = GetPieceSquareValue(PieceType.King, GetSquareIndexSided(whiteKingSquare, true), openingWeight, endGameWeight);
-        int blackKingValue = GetPieceSquareValue(PieceType.King, GetSquareIndexSided(blackKingSquare, false), openingWeight, endGameWeight);
+        float whiteKingValue = GetPieceSquareValue(PieceType.King, GetSquareIndexSided(whiteKingSquare, true), openingWeight, endGameWeight);
+        float blackKingValue = GetPieceSquareValue(PieceType.King, GetSquareIndexSided(blackKingSquare, false), openingWeight, endGameWeight);
         evaluation += whiteKingValue - blackKingValue;
 
         ulong whitePiecesWithoutKing = board.WhitePiecesBitboard & ~board.GetPieceBitboard(PieceType.King, true);
         ulong blackPiecesWithoutKing = board.BlackPiecesBitboard & ~board.GetPieceBitboard(PieceType.King, false);
         
         // Mop-up eval for endgame
-        int whiteMopUpEval = EvaluateMopUp(whiteMaterialEval, blackMaterialEval, whiteKingSquare, blackKingSquare, endGameWeight);
-        int blackMopUpEval = EvaluateMopUp(blackMaterialEval, whiteMaterialEval, blackKingSquare, whiteKingSquare, endGameWeight);
+        float whiteMopUpEval = EvaluateMopUp(whiteMaterialEval, blackMaterialEval, whiteKingSquare, blackKingSquare, endGameWeight);
+        float blackMopUpEval = EvaluateMopUp(blackMaterialEval, whiteMaterialEval, blackKingSquare, whiteKingSquare, endGameWeight);
         evaluation += whiteMopUpEval - blackMopUpEval;
 
         // Center control
-        int whiteCenterControl = BitboardHelper.GetNumberOfSetBits((whitePiecesWithoutKing & ~whitePawns) & centerSquares) * pieceCenterControlScore
-                                 + BitboardHelper.GetNumberOfSetBits(whitePawns & centerSquares) * pawnCenterControlScore;
-        int blackCenterControl = BitboardHelper.GetNumberOfSetBits((blackPiecesWithoutKing & ~blackPawns) & centerSquares) * pieceCenterControlScore
-                                 + BitboardHelper.GetNumberOfSetBits(blackPawns & centerSquares) * pawnCenterControlScore;
+        float whiteCenterControl = BitboardHelper.GetNumberOfSetBits((whitePiecesWithoutKing & ~whitePawns) & centerSquares) * pieceCenterControlScore
+                                   + BitboardHelper.GetNumberOfSetBits(whitePawns & centerSquares) * pawnCenterControlScore;
+        float blackCenterControl = BitboardHelper.GetNumberOfSetBits((blackPiecesWithoutKing & ~blackPawns) & centerSquares) * pieceCenterControlScore
+                                   + BitboardHelper.GetNumberOfSetBits(blackPawns & centerSquares) * pawnCenterControlScore;
         
         // Apply with opening weight (important early, less important in endgame)
-        evaluation += (int)((whiteCenterControl - blackCenterControl) * openingWeight);
+        evaluation += (whiteCenterControl - blackCenterControl) * openingWeight;
         
         // Passed pawns and isolated pawns
-        int whitePawnScore = EvaluatePassedAndIsolatedPawns(whitePawns, blackPawns, true);
-        int blackPawnScore = EvaluatePassedAndIsolatedPawns(blackPawns, whitePawns, false);
+        float whitePawnScore = EvaluatePassedAndIsolatedPawns(whitePawns, blackPawns, true);
+        float blackPawnScore = EvaluatePassedAndIsolatedPawns(blackPawns, whitePawns, false);
         evaluation += whitePawnScore - blackPawnScore;
         
         // King safety
@@ -146,30 +148,30 @@ public static class Evaluation
         int whiteNumQueens = BitboardHelper.GetNumberOfSetBits(whiteQueens);
         int blackNumRooks = BitboardHelper.GetNumberOfSetBits(blackRooks);
         int blackNumQueens = BitboardHelper.GetNumberOfSetBits(blackQueens);
-        int whiteKingSafetyEval = EvaluateKingSafety(true, whiteKingSquare.Index, whitePawns, blackPawns, blackPieceSquareTableEval, blackNumRooks, blackNumQueens, openingWeight);
-        int blackKingSafetyEval = EvaluateKingSafety(false, blackKingSquare.Index, blackPawns, whitePawns, whitePieceSquareTableEval, whiteNumRooks, whiteNumQueens, openingWeight);
+        float whiteKingSafetyEval = EvaluateKingSafety(true, whiteKingSquare.Index, whitePawns, blackPawns, blackPieceSquareTableEval, blackNumRooks, blackNumQueens, openingWeight);
+        float blackKingSafetyEval = EvaluateKingSafety(false, blackKingSquare.Index, blackPawns, whitePawns, whitePieceSquareTableEval, whiteNumRooks, whiteNumQueens, openingWeight);
         evaluation += whiteKingSafetyEval - blackKingSafetyEval;
         
         
         return board.IsWhiteToMove ? evaluation : -evaluation;
     }
 
-    private static int EvaluateMaterial(ulong pieces, PieceType pieceType, float openingWeight, float endGameWeight)
+    private static float EvaluateMaterial(ulong pieces, PieceType pieceType, float openingWeight, float endGameWeight)
     {
         // Get piece values for both game phases
-        int pieceValueOpening = PieceValues[(int)pieceType];
-        int pieceValueEndgame = PieceValuesEndGame[(int)pieceType];
+        float pieceValueOpening = PieceValues[(int)pieceType];
+        float pieceValueEndgame = PieceValuesEndGame[(int)pieceType];
     
         // Blend the piece value based on game phase
-        int blendedPieceValue = (int)(pieceValueOpening * openingWeight + pieceValueEndgame * endGameWeight);
+        float blendedPieceValue = pieceValueOpening * openingWeight + pieceValueEndgame * endGameWeight;
     
         int pieceCount = BitboardHelper.GetNumberOfSetBits(pieces);
         return blendedPieceValue * pieceCount;
     }
 
-    private static int EvaluatePieceSquareTable(ulong pieces, bool isWhite, PieceType pieceType, float openingWeight, float endGameWeight)
+    private static float EvaluatePieceSquareTable(ulong pieces, bool isWhite, PieceType pieceType, float openingWeight, float endGameWeight)
     {
-        int evaluation = 0;
+        float evaluation = 0;
         
         ulong piecesCopy = pieces;
         while (piecesCopy != 0)
@@ -178,16 +180,16 @@ public static class Evaluation
             int adjustedSquareIndex = GetSquareIndexSided(squareIndex, isWhite);
             
             // Get piece-square value with game phase blending
-            int pieceSquareValue = GetPieceSquareValue(pieceType, adjustedSquareIndex, openingWeight, endGameWeight);
+            float pieceSquareValue = GetPieceSquareValue(pieceType, adjustedSquareIndex, openingWeight, endGameWeight);
             evaluation += pieceSquareValue;
         }
         
         return evaluation;
     }
     
-    private static int EvaluatePassedAndIsolatedPawns(ulong ownPawns, ulong opponentPawns, bool isWhite)
+    private static float EvaluatePassedAndIsolatedPawns(ulong ownPawns, ulong opponentPawns, bool isWhite)
     {
-        int evaluation = 0;
+        float evaluation = 0;
         int numIsolatedPawns = 0;
         
         ulong pawnsCopy = ownPawns;
@@ -201,7 +203,7 @@ public static class Evaluation
             {
                 // Bonus based on how advanced the pawn is
                 int rank = squareIndex / 8;
-                int bonus = isWhite ? passedPawnBonuses[7 - rank] : passedPawnBonuses[rank];
+                float bonus = isWhite ? passedPawnBonuses[7 - rank] : passedPawnBonuses[rank];
                 evaluation += bonus;
             }
             
@@ -216,12 +218,12 @@ public static class Evaluation
         return evaluation;
     }
 
-    private static int EvaluateKingSafety(bool isWhite, int kingSquare, ulong ownPawns, ulong enemyPawns, int enemyPieceSquareScore, int enemyNumRooks, int enemyNumQueens, float openingWeight)
+    private static float EvaluateKingSafety(bool isWhite, int kingSquare, ulong ownPawns, ulong enemyPawns, float enemyPieceSquareScore, int enemyNumRooks, int enemyNumQueens, float openingWeight)
     {
         int kingFile = kingSquare % 8;
         
-        int penalty = 0;
-        int uncastledKingPenalty = 0;
+        float penalty = 0;
+        float uncastledKingPenalty = 0;
         
         // King is likely castled
         if (kingFile <= 2 || kingFile >= 5)
@@ -255,11 +257,11 @@ public static class Evaluation
             // Scales penalty from 0-50 based on how developed the opponent's pieces are
             // Logic: an uncastled king is more vulnerable when the opponent has active pieces
             float enemyDevelopmentScore = Math.Clamp((enemyPieceSquareScore + 10) / 130f, 0, 1);
-            uncastledKingPenalty = (int) (maxUnCastledKingPenalty * enemyDevelopmentScore);
+            uncastledKingPenalty = maxUnCastledKingPenalty * enemyDevelopmentScore;
         }
         
         // Evaluate open file attacks
-        int openFileAgainstKingPenalty = 0;
+        float openFileAgainstKingPenalty = 0;
         
         // If enemy has 2+ rooks or rook+queen combo
         if (enemyNumRooks > 1 || (enemyNumRooks > 0 && enemyNumQueens > 0))
@@ -294,7 +296,7 @@ public static class Evaluation
             enemyQueenMultiplier *= 0.67f; // SIX SEVEN - not tuned just funny number
         }
 
-        return (int)((-penalty - uncastledKingPenalty - openFileAgainstKingPenalty) * openingWeight * enemyQueenMultiplier);
+        return (-penalty - uncastledKingPenalty - openFileAgainstKingPenalty) * openingWeight * enemyQueenMultiplier;
     }
     
     public static float CalculateGamePhase(Board board)
@@ -368,50 +370,50 @@ public static class Evaluation
         return squareIndex;
     }
     
-    public static int GetPieceSquareValue(PieceType pieceType, int squareIndex, float openingWeight, float endGameWeight)
+    public static float GetPieceSquareValue(PieceType pieceType, int squareIndex, float openingWeight, float endGameWeight)
     {
-        int openingValue = 0;
-        int endgameValue = 0;
+        float openingValue = 0;
+        float endgameValue = 0;
         
         switch (pieceType)
         {
             case PieceType.Pawn:
-                openingValue = PieceSquareTable.Pawns[squareIndex];
-                endgameValue = PieceSquareTable.PawnsEnd[squareIndex];
+                openingValue = TunableParameters.GetPawnPST()[squareIndex];
+                endgameValue = TunableParameters.GetPawnPSTEnd()[squareIndex];
                 break;
             case PieceType.Knight:
-                openingValue = PieceSquareTable.Knights[squareIndex];
-                endgameValue = PieceSquareTable.KnightsEnd[squareIndex];
+                openingValue = TunableParameters.GetKnightPST()[squareIndex];
+                endgameValue = TunableParameters.GetKnightPST()[squareIndex]; // Knights use same table for both phases
                 break;
             case PieceType.Bishop:
-                openingValue = PieceSquareTable.Bishops[squareIndex];
-                endgameValue = PieceSquareTable.BishopsEnd[squareIndex];
+                openingValue = TunableParameters.GetBishopPST()[squareIndex];
+                endgameValue = TunableParameters.GetBishopPST()[squareIndex]; // Bishops use same table for both phases
                 break;
             case PieceType.Rook:
-                openingValue = PieceSquareTable.Rooks[squareIndex];
-                endgameValue = PieceSquareTable.RooksEnd[squareIndex];
+                openingValue = TunableParameters.GetRookPST()[squareIndex];
+                endgameValue = TunableParameters.GetRookPST()[squareIndex]; // Rooks use same table for both phases
                 break;
             case PieceType.Queen:
-                openingValue = PieceSquareTable.Queens[squareIndex];
-                endgameValue = PieceSquareTable.QueensEnd[squareIndex];
+                openingValue = TunableParameters.GetQueenPST()[squareIndex];
+                endgameValue = TunableParameters.GetQueenPST()[squareIndex]; // Queens use same table for both phases
                 break;
             case PieceType.King:
-                openingValue = PieceSquareTable.KingStart[squareIndex];
-                endgameValue = PieceSquareTable.KingEnd[squareIndex];
+                openingValue = TunableParameters.GetKingPSTStart()[squareIndex];
+                endgameValue = TunableParameters.GetKingPSTEnd()[squareIndex];
                 break;
             default:
                 return 0;
         }
         
         // Blend between opening and endgame values
-        return (int)(openingValue * openingWeight + endgameValue * endGameWeight);
+        return openingValue * openingWeight + endgameValue * endGameWeight;
     }
 
-    private static int EvaluateMopUp(int myMaterial, int enemyMaterial, Square selfKingSquare, Square enemyKingSquare, float endGameWeight)
+    private static float EvaluateMopUp(float myMaterial, float enemyMaterial, Square selfKingSquare, Square enemyKingSquare, float endGameWeight)
     {
         if (myMaterial > enemyMaterial + PieceValues[(int)PieceType.Pawn] * 2 && endGameWeight > 0)
         {
-            int mopUpScore = 0;
+            float mopUpScore = 0;
 
             int friendlyKingSquare = selfKingSquare.Index;
             int opponentKingSquare = enemyKingSquare.Index;
@@ -421,7 +423,7 @@ public static class Evaluation
             
             // Encourage pushing opponent king to edge of board
             mopUpScore += PrecomputedEvalData.CentreManhattanDistance[opponentKingSquare] * mopUpOpponentKingDistanceToCenterMultiplier;
-            return (int)(mopUpScore * endGameWeight);
+            return mopUpScore * endGameWeight;
         }
 
         return 0;

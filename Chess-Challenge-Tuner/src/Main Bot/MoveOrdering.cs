@@ -75,8 +75,8 @@ public class MoveOrdering
             }
             
             // Encourage moving into a better square(based on PST)
-            int toScore = Evaluation.GetPieceSquareValue(movePieceType, Evaluation.GetSquareIndexSided(targetSquare, board.IsWhiteToMove), openingWeight, endGameWeight);
-            int fromScore = Evaluation.GetPieceSquareValue(movePieceType, Evaluation.GetSquareIndexSided(startSquare, board.IsWhiteToMove), openingWeight, endGameWeight);
+            int toScore = (int)Evaluation.GetPieceSquareValue(movePieceType, Evaluation.GetSquareIndexSided(targetSquare, board.IsWhiteToMove), openingWeight, endGameWeight);
+            int fromScore = (int)Evaluation.GetPieceSquareValue(movePieceType, Evaluation.GetSquareIndexSided(startSquare, board.IsWhiteToMove), openingWeight, endGameWeight);
             score += toScore - fromScore;
             
             // Is not a pawn or a king and is going into a square the enemy is attacking
@@ -141,7 +141,7 @@ public class MoveOrdering
 
     int GetPieceValue(PieceType pieceType)
     {
-        return Evaluation.PieceValues[(int)pieceType];
+        return (int) Evaluation.PieceValues[(int)pieceType];
     }
     
     static void Quicksort(Span<Move> values, int[] scores, int low, int high)
