@@ -49,6 +49,13 @@ Where:
 - Write your own static evaluation implementation in the Evaluation.cs file.
 - Define tunable parameters in TunableParameters.cs with the [Tunable] attribute.
 
+### Naming Conventions for Tunable Parameters
+The tuner sets automatic bounds based on parameter names:
+- "Value" → Material values (50-150 for pawns, 200-500 for pieces, etc.)
+- "PST" → Piece-square table values (-100 to +100)
+- "Bonus" → Positive bonuses (0 to +200)
+- "Penalty" → Negative penalties (-200 to 0)
+
 ### Basic Usage
 
 ```bash
