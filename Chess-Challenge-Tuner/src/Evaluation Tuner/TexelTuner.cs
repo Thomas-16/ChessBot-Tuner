@@ -31,7 +31,7 @@ public class TexelTuner
     private List<TuningPosition> positions = new();
     private List<TunableParam> parameters = new();
     private double K = 0.5; // Scaling factor for sigmoid
-    private double learningRate = 1000; // Reduce from 10000 to prevent overshooting
+    private double learningRate = 10000;
     private int batchSize = 10000;
     private double bestError = double.MaxValue;
     private Dictionary<string, float> bestParameters = new();
@@ -232,7 +232,7 @@ public class TexelTuner
         double bestKError = CalculateError();
         
         // Try different K values
-        for (double k = 0.01; k <= 0.1; k += 0.001)
+        for (double k = 0.005; k <= 0.02; k += 0.001)
         {
             K = k;
             double error = CalculateError();

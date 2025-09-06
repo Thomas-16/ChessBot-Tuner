@@ -76,7 +76,7 @@ namespace ChessChallenge.Application
 
             // Parse options
             int iterations = 100;
-            double learningRate = 1000;
+            double learningRate = 10000;
             int batchSize = 10000;
             int maxPositions = 500000;
             string outputFile = "tuned_parameters.cs";
