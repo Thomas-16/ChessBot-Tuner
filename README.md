@@ -115,7 +115,7 @@ Use quiet position datasets for best results:
 
 ## Acknowledgments
 
-- **Sebastian Lague** - For the excellent [Chess Challenge](https://github.com/SebLague/Chess-Challenge) framework that this project builds upon
+- **Sebastian Lague** - For the [Chess Challenge](https://github.com/SebLague/Chess-Challenge) framework that this project builds upon
 - **Texel Chess Engine** - Original tuning methodology  
 - **Chess Programming Community** - Extensive evaluation knowledge and techniques
 
